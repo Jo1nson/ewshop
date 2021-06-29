@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="~assets/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>首页</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import {onMounted} from 'vue';
+import {getHomeAllData} from "@/network/home";
 
 export default {
   name: 'Home',
+  setup(){
+    onMounted(()=>{
+      getHomeAllData().then(res=>{
+        console.log(res)
+      }).catch(err=>{
+
+      })
+    })
+  },
   components: {
-    HelloWorld
+
   }
 }
 </script>
+<style>
+  .demo1{
+    color:var(--color-high-text)
+  }
+</style>
