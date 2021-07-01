@@ -20,7 +20,7 @@
     </router-link>
     <router-link class="tab-bar-item" to="/shopcart">
       <div class="icon">
-        <van-badge :content="0" max="9">
+        <van-badge :content="$store.state.cartCount" max="9">
           <i class="iconfont icon-ziyuan"></i>
         </van-badge>
         </div>
@@ -32,6 +32,20 @@
     </router-link>
   </div>
 </template>
+
+<script>
+  import {onMounted} from 'vue'
+  import {useStore} from 'vuex'
+  export default {
+    setup(){
+
+      const store = useStore();
+      onMounted(()=>{
+        store.dispatch('updateCart')
+      })
+    }
+  }
+</script>
 
 <style lang="scss">
 @import "assets/css/base.css";

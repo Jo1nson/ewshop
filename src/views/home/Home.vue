@@ -101,8 +101,6 @@
         })
 
         bscroll.on('pullingUp',()=>{
-          console.log('上拉加载更多。。。。。');
-          console.log(document.querySelector('.content').clientWidth);
 
           const page = goods[currentType.value].page+1;
 
