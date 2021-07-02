@@ -23,3 +23,9 @@ export function logout(data){
 
   })
 }
+
+export function getUser() {
+  return request({
+    url:'/api/user',
+  })
+}
