@@ -7,7 +7,7 @@
     <div class="user-box">
       <div class="user-info">
         <div class="info">
-          <img src="~assets/images/2.png" />
+          <img src="~assets/images/1.png" />
           <div class="user-desc">
             <span>昵称：{{ user.name }}</span>
             <span>登录名：{{ user.email }}</span>

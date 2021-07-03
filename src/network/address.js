@@ -43,6 +43,5 @@ export function getAddressDetail(id){
   return request({
     url:`/api/address/${id}`,
     method: 'GET',
-    params
   })
 }

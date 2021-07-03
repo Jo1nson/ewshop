@@ -41,7 +41,7 @@
                 v-for="sub in item.orderDetails.data"
                 :key="sub.id"
                 :num="sub.num"
-                :price="sub.goods.price"
+                :price="sub.goods.price+ '.00'"
                 desc="全场包邮"
                 :title="sub.goods.title"
                 :thumb="sub.goods.cover_url"

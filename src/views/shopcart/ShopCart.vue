@@ -13,7 +13,7 @@
             <div class="good-item">
               <!--选中购物车中商品的ID-->
               <van-checkbox :name="item.id" />
-              <div class="good-img"><img src="@/assets/images/2.png" /></div>
+              <div class="good-img"><img :src="item.goods.cover_url" /></div>
               <div class="good-desc">
                 <div class="good-title">
                   <span>{{ item.goods.title }}</span>
@@ -51,13 +51,13 @@
           @submit="onSubmit"
           button-text="结算"
       >
-        <van-checkbox @click="allCheck" v-model:click="checkAll">全选</van-checkbox>
+        <van-checkbox @click="allCheck" v-model:checked="checkAll">全选</van-checkbox>
       </van-submit-bar>
 
       <div class="empty" v-if="!list.length">
-        <img class="empty-cart" src="~assets/images/2.png" alt="空购物车" />
+        <img class="empty-cart" src="~assets/images/1.png" alt="空购物车" />
         <div class="title">购物车空空如也</div>
-        <van-button round color="#1baeae" type="primary" block @click="goTo"
+        <van-button round color="#44BA80" type="primary" block @click="goTo"
         >前往选购</van-button
         >
       </div>
@@ -70,7 +70,7 @@ import NavBar from "@/components/common/navbar/NavBar"; // 1-1 引入顶部导�
 import { useRouter } from "vue-router";
 import { useStore } from "vuex"; // ⚪️  引入状态管理
 import { Toast } from "vant";
-import { getCart, checkedCart, deleteCart, modifyCart } from "@/network/cart";
+import { getCart, checkedCart, deleteCartItem, modifyCart } from "@/network/cart";
 export default {
   name: "ShopCart",
   setup() {
@@ -97,9 +97,11 @@ export default {
         Toast.clear();
       });
     };
+
     onMounted(() => {
       init();
     });
+
     //通过计算属性 计算总价
     const total = computed(() => {
       //

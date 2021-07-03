@@ -79,7 +79,7 @@ export default {
       state.type = type;
       state.addressId = addressId;
       // 如果状态为edit编辑的时候
-      if (type == "edit") {
+      if (type === "edit") {
         // 获取到当前编辑id
         getAddressDetail(addressId).then((res) => {
           // 地址详情赋值给一个变量
@@ -94,22 +94,16 @@ export default {
             // 先找出当前对应的区
             if (text == addressDetail.county) {
               // 找到区对应的几个省份
-              const provinceIndex = province.findIndex(
-                  (item) => item.id.substr(0, 2) == id.substr(0, 2)
-              );
+              const provinceIndex = province.findIndex(item => item.id.substr(0, 2) == id.substr(0, 2))
               // 找到区对应的几个市区
-              const cityItem = Object.entries(state.areaList.city_list).filter(
-                  ([cityId, city]) => cityId.substr(0, 4) == id.substr(0, 4)
-              )[0];
+              // eslint-disable-next-line no-unused-vars
+              const cityItem = Object.entries(state.areaList.city_list).filter(([cityId, city]) => cityId.substr(0, 4) == id.substr(0, 4))[0]
               // 对比找到的省份和接口返回的省份是否相等，因为有一些区会重名
-              if (
-                  province[provinceIndex].text == addressDetail.province &&
-                  cityItem[1] == addressDetail.city
-              ) {
-                _areaCode = id;
+              if (province[provinceIndex].text == addressDetail.province && cityItem[1] == addressDetail.city) {
+                _areaCode = id
               }
             }
-          });
+          })
           // 编辑地址信息，显示在编辑栏表单中
           state.addressInfo = {
             name: addressDetail.name,

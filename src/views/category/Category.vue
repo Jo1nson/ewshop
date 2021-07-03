@@ -49,7 +49,7 @@
               @click="itemClick(item.id)"
               :num="item.comments_count"
               :tag="item.comments_count >= 0 ? '流行' : '标签'"
-              :price="item.price"
+              :price="item.price+ '.00'"
               :desc="item.updated_at"
               :title="item.title"
               :thumb="item.cover_url"
