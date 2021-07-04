@@ -7,7 +7,7 @@
     <div class="user-box">
       <div class="user-info">
         <div class="info">
-          <img src="~assets/images/1.png" />
+          <img :src="user.avatar_url" />
           <div class="user-desc">
             <span>昵称：{{ user.name }}</span>
             <span>登录名：{{ user.email }}</span>
@@ -25,7 +25,7 @@
           <span>我的订单</span>
           <van-icon name="arrow" />
         </li>
-        <li class="van-hairline--bottom" @click="goTo('/setting')">
+        <li class="van-hairline--bottom" @click="goTo('/user')">
           <span>账号管理</span>
           <van-icon name="arrow" />
         </li>
@@ -66,8 +66,8 @@ export default {
     });
     onMounted(() => {
       getUser().then((res) => {
-        console.log(res);
         state.user = res;
+        console.log(state.user);
       });
     });
     const tologout = () => {

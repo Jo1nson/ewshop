@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import 'vant/lib/index.css'; // 类似 element ui 框架
 
-import {Grid, GridItem ,Popup,AddressEdit,AddressList,SubmitBar,Stepper,Checkbox, CheckboxGroup,SwipeCell,Field,Form,Tag,Button,Image as VanImage,Card,Tab, Tabs,Swipe, SwipeItem, Lazyload, Badge,Sidebar, SidebarItem,Collapse, CollapseItem} from 'vant';
+import {Skeleton, Grid, GridItem ,Popup,AddressEdit,AddressList,SubmitBar,Stepper,Checkbox, CheckboxGroup,SwipeCell,Field,Form,Tag,Button,Image as VanImage,Card,Tab, Tabs,Swipe, SwipeItem, Lazyload, Badge,Sidebar, SidebarItem,Collapse, CollapseItem} from 'vant';
 
 createApp(App)
   .use(SubmitBar)
@@ -28,6 +28,7 @@ createApp(App)
   .use(AddressList)
   .use(AddressEdit)
   .use(Popup)
+  .use(Skeleton)
   .use(store).use(router).mount('#app')
 
 

@@ -25,6 +25,7 @@
 
       <template #footer>
         <!--  3-1 @click="handleAddCart"  @click="goToCart" -->
+        <van-button icon="like-o" type="danger" @click="handleCollect">收藏</van-button>
         <van-button type="warning" @click="handleAddCart">加入购物车</van-button>
         <van-button type="danger" @click="goToCart">立即购买</van-button>
       </template>
@@ -52,9 +53,10 @@
 <script>
 import NavBar from "@/components/common/navbar/NavBar"; // 1-1 引入顶部导航组件
 import { useRoute, useRouter } from "vue-router"; // 注意：这里导入路由，不是路由器
-import { useStore } from "vuex"; // ⚪️ 1 引入状态管理
+import { useStore } from "vuex"; // 1 引入状态管理
 import { ref, onMounted, reactive, toRefs } from "vue"; //  2-1 onMounted , reactive,toRefs
 import { getDetail } from "@/network/detail"; //  2-2
+import {modifyCollects} from "@/network/collect";
 import GoodsList from "@/components/content/goods/GoodsList";
 import { addCart } from "@/network/cart";
 import { Toast } from "vant";
@@ -85,7 +87,17 @@ export default {
         book.like_goods = res.like_goods;
       });
     });
-    //  3-2 添加购物车
+
+    const handleCollect = () => {
+      modifyCollects(book.detail.id).then((res) => {
+        if(res.status ===201){
+          Toast.success("收藏成功！");
+        } else if(res.status ===204){
+          Toast.success("取消收藏成功！");
+        }
+      })
+    };
+
     const handleAddCart = () => {
       // console.log('加入购物车')
       // 商品id book下面的详情
@@ -115,9 +127,12 @@ export default {
       active,
       handleAddCart, //  3-4
       goToCart, //  3-4
+      handleCollect
     };
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

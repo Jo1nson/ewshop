@@ -29,3 +29,19 @@ export function getUser() {
     url:'/api/user',
   })
 }
+
+export function modifyUser(data) {
+  return request({
+    url:'/api/user',
+    method: 'put',
+    data,
+  })
+}
+
+export function modifyAvatar(data) {
+  return request({
+    url:'/api/user',
+    method: 'patch',
+    data,
+  })
+}

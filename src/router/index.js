@@ -10,9 +10,12 @@ const Register = () =>   ('@/views/profile/Register')
 const Login = () => import('@/views/profile/Login')
 const Address = () => import('@/views/profile/Address');
 const AddressEdit = () => import('@/views/profile/AddressEdit');
+const Collect = () => import('@/views/profile/Collect');
 const Order = () => import('@/views/order/Order');
 const OrderDetail = () => import('@/views/order/OrderDetail');
 const CreateOrder = () => import('@/views/order/CreateOrder');
+const About = () => import('@/views/About');
+const User = () => import('@/views/profile/User');
 
 import store from '@/store'; // ⚪️ 引入状态管理文件夹
 import {Notify, Toast} from 'vant'; // 消息提示插件
@@ -127,6 +130,31 @@ const routes = [
     component: Login,
     meta: {
       title: '图书兄弟-用户登录'
+    }
+  },
+  {
+    path: '/collect',
+    name: 'Collect',
+    component: Collect,
+    meta: {
+      title: '图书兄弟-我的收藏'
+    }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+    meta: {
+      title: '图书兄弟-关于我们'
+    }
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: User,
+    meta: {
+      title: '图书兄弟-账号管理',
+      isAuthRequired:true
     }
   },
 ]
