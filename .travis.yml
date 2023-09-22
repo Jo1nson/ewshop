@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - "10"
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
+
+# S: Build Lifecycle
+install:
+  - yarn install
+
+before_script:
+
+# 无其他依赖项所以执行npm run build 构建就行了
+script:
+  - npm run build
+
+deploy:
+    # 其他的一些配置项，可以参考：https://docs.travis-ci.com/user/deployment/pages/
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist/
+  github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
+  keep_history: false
+  on:
+    branch: master
